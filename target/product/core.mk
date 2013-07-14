@@ -131,7 +131,16 @@ PRODUCT_PACKAGES += \
     mms-common \
     zoneinfo.dat \
     zoneinfo.idx \
-    zoneinfo.version
+    zoneinfo.version \
+    libinput \
+    libcamera_compat_layer \
+    libis_compat_layer \
+    libmedia_compat_layer \
+    libsf_compat_layer \
+    libui_compat_layer \
+    libubuntu_application_api \
+    ubuntuappmanager \
+    upstart-property-watcher
 
 PRODUCT_COPY_FILES += \
     system/core/rootdir/init.usb.rc:root/init.usb.rc \
