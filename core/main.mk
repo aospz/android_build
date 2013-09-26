@@ -470,11 +470,8 @@ subdirs := \
 	build/tools/zipalign \
 	development/tools/emulator/opengl \
 	external/aac \
-	external/bouncycastle \
-	external/bsdiff \
 	external/busybox \
 	external/bzip2 \
-	external/chromium \
 	external/e2fsprogs \
 	external/expat \
 	external/flac \
