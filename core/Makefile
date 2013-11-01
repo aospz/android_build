@@ -364,6 +364,12 @@ $(INSTALLED_RAMDISK_TARGET): $(MKBOOTFS) $(INTERNAL_RAMDISK_FILES) | $(MINIGZIP)
 	$(call pretty,"Target ram disk: $@")
 	$(hide) $(MKBOOTFS) $(TARGET_ROOT_OUT) | $(MINIGZIP) > $@
 
+#Copy the ramdisk under system/boot so it's available to Android within the LXC container
+BOOT_ANDROID_RAMDISK_IMG := $(TARGET_OUT)/boot/android-ramdisk.img
+
+$(BOOT_ANDROID_RAMDISK_IMG): $(INSTALLED_RAMDISK_TARGET)
+	$(hide) mkdir -p $(dir $@)
+	$(hide) $(ACP) $(INSTALLED_RAMDISK_TARGET) $@
 
 ifneq ($(strip $(TARGET_NO_KERNEL)),true)
 
@@ -710,7 +716,8 @@ INTERNAL_SYSTEMIMAGE_FILES := $(filter $(TARGET_OUT)/%, \
     $(ALL_GENERATED_SOURCES) \
     $(ALL_DEFAULT_INSTALLED_MODULES) \
     $(PDK_FUSION_SYSIMG_FILES) \
-    $(RECOVERY_RESOURCE_ZIP))
+    $(RECOVERY_RESOURCE_ZIP) \
+    $(BOOT_ANDROID_RAMDISK_IMG))
 
 ifdef is_tests_build
 # We don't want to install tests modules to the system partition
