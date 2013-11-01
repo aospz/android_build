@@ -138,6 +138,10 @@ PRODUCT_PACKAGES += \
     libmedia_compat_layer \
     libsf_compat_layer \
     libui_compat_layer \
+    direct_camera_test \
+    direct_input_test \
+    direct_media_test \
+    direct_sf_test \
     libubuntu_application_api \
     ubuntuappmanager \
     upstart-property-watcher
